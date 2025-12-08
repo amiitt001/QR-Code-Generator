@@ -59,14 +59,14 @@ export const QRGenerator: React.FC = () => {
   const [aiSummary, setAiSummary] = useState('');
   const [downloadSuccess, setDownloadSuccess] = useState(false);
   const [errorMessage, setErrorMessage] = useState('');
-  
+
   // Security State
   const [isVerificationOpen, setIsVerificationOpen] = useState(false);
-  
+
   // Embed State
   const [isEmbedOpen, setIsEmbedOpen] = useState(false);
   const [embedDataUrl, setEmbedDataUrl] = useState('');
-  
+
   // Wifi State
   const [wifiSsid, setWifiSsid] = useState('');
   const [wifiPass, setWifiPass] = useState('');
@@ -91,7 +91,7 @@ export const QRGenerator: React.FC = () => {
   const handleApplyTemplate = (template: QRTemplate) => {
     // 1. Switch Tab
     setActiveTab(template.mode);
-    
+
     // 2. Apply Colors
     setSettings(prev => ({
       ...prev,
@@ -147,19 +147,19 @@ export const QRGenerator: React.FC = () => {
 
     canvas.toBlob(async (blob) => {
       if (!blob) return;
-      
+
       const file = new File([blob], "qrcode.png", { type: "image/png" });
-      
+
       if (navigator.share && navigator.canShare && navigator.canShare({ files: [file] })) {
         try {
           await navigator.share({
             files: [file],
             title: 'QR Code',
-            text: 'Here is my generated QR code from Gemini QR Studio!',
+            text: 'Here is my generated QR code from QR Studio!',
           });
         } catch (error) {
           if ((error as Error).name !== 'AbortError') {
-             console.error('Error sharing', error);
+            console.error('Error sharing', error);
           }
         }
       } else {
@@ -179,7 +179,7 @@ export const QRGenerator: React.FC = () => {
     // Heuristic: If it looks like a URL, share that. Otherwise, share the app link or a placeholder.
     const isUrl = qrValue.match(/^https?:\/\//i);
     const linkToShare = isUrl ? qrValue : window.location.href;
-    const text = "Check out this QR Code generated with Gemini QR Studio!";
+    const text = "Check out this QR Code generated with QR Studio!";
 
     let url = '';
     switch (platform) {
@@ -224,7 +224,7 @@ export const QRGenerator: React.FC = () => {
       setSettings(prev => ({ ...prev, value: result.data }));
       setAiSummary(result.summary);
       setAiStatus(GenerationStatus.SUCCESS);
-      
+
       // Log success for rate limiting
       SecurityService.recordRequest();
     } catch (e) {
@@ -239,12 +239,12 @@ export const QRGenerator: React.FC = () => {
 
   return (
     <div>
-      <VerificationModal 
-        isOpen={isVerificationOpen} 
+      <VerificationModal
+        isOpen={isVerificationOpen}
         onVerify={executeAiGeneration}
         onCancel={() => setIsVerificationOpen(false)}
       />
-      
+
       <EmbedModal
         isOpen={isEmbedOpen}
         onClose={() => setIsEmbedOpen(false)}
@@ -267,9 +267,9 @@ export const QRGenerator: React.FC = () => {
 
           {/* New Design Gallery Section */}
           <div className="reveal-on-scroll delay-100">
-             <TemplateGallery onSelect={handleApplyTemplate} />
+            <TemplateGallery onSelect={handleApplyTemplate} />
           </div>
-          
+
           {/* Main Input Card */}
           <div id="input-card" className="bg-white rounded-[2rem] shadow-[0_8px_30px_rgba(0,0,0,0.04)] border border-gray-100 overflow-hidden">
             {/* Tab Navigation */}
@@ -306,7 +306,7 @@ export const QRGenerator: React.FC = () => {
                   <div>
                     <label className="block text-sm font-semibold text-[#444746] mb-3 ml-1">Content</label>
                     <div className="relative group">
-                       <div className="absolute top-5 left-5 flex items-start pointer-events-none">
+                      <div className="absolute top-5 left-5 flex items-start pointer-events-none">
                         <AlignLeft className="h-5 w-5 text-[#444746] group-focus-within:text-[#0B57D0] transition-colors" />
                       </div>
                       <textarea
@@ -332,13 +332,13 @@ export const QRGenerator: React.FC = () => {
                       <input
                         type="text"
                         placeholder="e.g. MyHomeNetwork"
-                         className="w-full pl-14 pr-4 py-4 bg-[#F8FAFC] border border-gray-100 rounded-2xl text-[#1F1F1F] placeholder-gray-400 focus:ring-4 focus:ring-[#0B57D0]/10 focus:border-[#0B57D0] focus:bg-white transition-all outline-none"
+                        className="w-full pl-14 pr-4 py-4 bg-[#F8FAFC] border border-gray-100 rounded-2xl text-[#1F1F1F] placeholder-gray-400 focus:ring-4 focus:ring-[#0B57D0]/10 focus:border-[#0B57D0] focus:bg-white transition-all outline-none"
                         value={wifiSsid}
                         onChange={(e) => setWifiSsid(e.target.value)}
                       />
                     </div>
                   </div>
-                  
+
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                     <div>
                       <label className="block text-sm font-semibold text-[#444746] mb-3 ml-1">Password</label>
@@ -349,11 +349,11 @@ export const QRGenerator: React.FC = () => {
                         <input
                           type={showWifiPass ? "text" : "password"}
                           placeholder="Network Password"
-                           className="w-full pl-14 pr-12 py-4 bg-[#F8FAFC] border border-gray-100 rounded-2xl text-[#1F1F1F] placeholder-gray-400 focus:ring-4 focus:ring-[#0B57D0]/10 focus:border-[#0B57D0] focus:bg-white transition-all outline-none"
+                          className="w-full pl-14 pr-12 py-4 bg-[#F8FAFC] border border-gray-100 rounded-2xl text-[#1F1F1F] placeholder-gray-400 focus:ring-4 focus:ring-[#0B57D0]/10 focus:border-[#0B57D0] focus:bg-white transition-all outline-none"
                           value={wifiPass}
                           onChange={(e) => setWifiPass(e.target.value)}
                         />
-                        <button 
+                        <button
                           type="button"
                           onClick={() => setShowWifiPass(!showWifiPass)}
                           className="absolute inset-y-0 right-0 pr-4 flex items-center text-[#444746] hover:text-[#1F1F1F] cursor-pointer"
@@ -364,31 +364,31 @@ export const QRGenerator: React.FC = () => {
                     </div>
 
                     <div>
-                       <SelectControl
-                          label="Security"
-                          value={wifiEncryption}
-                          options={[
-                            { label: 'WPA/WPA2', value: 'WPA' },
-                            { label: 'WEP', value: 'WEP' },
-                            { label: 'None', value: 'nopass' },
-                          ]}
-                          onChange={(v) => setWifiEncryption(v)}
-                        />
+                      <SelectControl
+                        label="Security"
+                        value={wifiEncryption}
+                        options={[
+                          { label: 'WPA/WPA2', value: 'WPA' },
+                          { label: 'WEP', value: 'WEP' },
+                          { label: 'None', value: 'nopass' },
+                        ]}
+                        onChange={(v) => setWifiEncryption(v)}
+                      />
                     </div>
                   </div>
 
-                   <div className="flex items-center pt-2">
-                      <label className="relative flex items-center gap-3 cursor-pointer group p-3 rounded-2xl hover:bg-[#F0F4F9] transition-colors select-none">
-                        <input
-                          type="checkbox"
-                          checked={wifiHidden}
-                          onChange={(e) => setWifiHidden(e.target.checked)}
-                          className="peer appearance-none h-5 w-5 border-2 border-[#444746] rounded-md checked:bg-[#0B57D0] checked:border-[#0B57D0] transition-all cursor-pointer"
-                        />
-                        <CheckCircle2 size={16} className="absolute left-[14px] top-[14px] text-white opacity-0 peer-checked:opacity-100 pointer-events-none transition-opacity" />
-                        <span className="text-sm font-medium text-[#444746] group-hover:text-[#1F1F1F]">Hidden Network</span>
-                      </label>
-                    </div>
+                  <div className="flex items-center pt-2">
+                    <label className="relative flex items-center gap-3 cursor-pointer group p-3 rounded-2xl hover:bg-[#F0F4F9] transition-colors select-none">
+                      <input
+                        type="checkbox"
+                        checked={wifiHidden}
+                        onChange={(e) => setWifiHidden(e.target.checked)}
+                        className="peer appearance-none h-5 w-5 border-2 border-[#444746] rounded-md checked:bg-[#0B57D0] checked:border-[#0B57D0] transition-all cursor-pointer"
+                      />
+                      <CheckCircle2 size={16} className="absolute left-[14px] top-[14px] text-white opacity-0 peer-checked:opacity-100 pointer-events-none transition-opacity" />
+                      <span className="text-sm font-medium text-[#444746] group-hover:text-[#1F1F1F]">Hidden Network</span>
+                    </label>
+                  </div>
                 </div>
               )}
 
@@ -397,15 +397,15 @@ export const QRGenerator: React.FC = () => {
                   <div className="relative overflow-hidden rounded-[2rem] bg-[#1F1F1F] p-8 text-white shadow-xl shadow-gray-200/50 group">
                     <div className="absolute inset-0 bg-gradient-to-r from-[#4285F4] via-[#9B72CB] to-[#D96570] opacity-0 group-hover:opacity-10 transition-opacity duration-700"></div>
                     <div className="relative flex items-start gap-5">
-                       <div className="p-3 bg-white/10 rounded-2xl backdrop-blur-md border border-white/10 shadow-inner">
-                          <Wand2 size={24} className="text-[#D3E3FD]" />
-                       </div>
-                       <div className="space-y-2">
-                          <h3 className="font-medium text-xl">AI Assistant</h3>
-                          <p className="text-[#E3E3E3] text-sm leading-relaxed max-w-md">
-                            Describe your needs naturally. We'll handle the formatting.
-                          </p>
-                       </div>
+                      <div className="p-3 bg-white/10 rounded-2xl backdrop-blur-md border border-white/10 shadow-inner">
+                        <Wand2 size={24} className="text-[#D3E3FD]" />
+                      </div>
+                      <div className="space-y-2">
+                        <h3 className="font-medium text-xl">AI Assistant</h3>
+                        <p className="text-[#E3E3E3] text-sm leading-relaxed max-w-md">
+                          Describe your needs naturally. We'll handle the formatting.
+                        </p>
+                      </div>
                     </div>
                   </div>
 
@@ -424,26 +424,26 @@ export const QRGenerator: React.FC = () => {
                         }}
                       />
                       <div className="hidden sm:block absolute bottom-4 right-6 text-xs font-medium text-gray-400 bg-white border border-gray-100 px-2 py-1 rounded-md shadow-sm">
-                         Cmd + Enter
+                        Cmd + Enter
                       </div>
                     </div>
                     {/* Security Warning / Error Message */}
                     {errorMessage && (
-                       <div className="flex items-center gap-2 p-3 bg-red-50 text-red-700 text-sm rounded-xl border border-red-200 animate-pulse">
-                          <AlertTriangle size={16} />
-                          {errorMessage}
-                       </div>
+                      <div className="flex items-center gap-2 p-3 bg-red-50 text-red-700 text-sm rounded-xl border border-red-200 animate-pulse">
+                        <AlertTriangle size={16} />
+                        {errorMessage}
+                      </div>
                     )}
                   </div>
 
                   <div className="flex flex-col sm:flex-row justify-end items-center gap-4 pt-2">
                     {aiStatus === GenerationStatus.SUCCESS && (
-                       <div className="flex-1 flex items-center gap-3 text-sm text-[#0F5C2E] bg-[#C4EED0]/30 px-4 py-3 rounded-2xl border border-[#C4EED0] animate-in fade-in">
-                          <CheckCircle2 size={18} className="text-[#0F5C2E]" />
-                          <span className="line-clamp-1 font-medium">{aiSummary || "Generated successfully!"}</span>
-                       </div>
+                      <div className="flex-1 flex items-center gap-3 text-sm text-[#0F5C2E] bg-[#C4EED0]/30 px-4 py-3 rounded-2xl border border-[#C4EED0] animate-in fade-in">
+                        <CheckCircle2 size={18} className="text-[#0F5C2E]" />
+                        <span className="line-clamp-1 font-medium">{aiSummary || "Generated successfully!"}</span>
+                      </div>
                     )}
-                    
+
                     <button
                       onClick={initiateAiGeneration}
                       disabled={aiStatus === GenerationStatus.LOADING || !aiPrompt.trim()}
@@ -475,10 +475,10 @@ export const QRGenerator: React.FC = () => {
               </div>
               Customization
             </h2>
-            
+
             <div className="space-y-8">
               {/* Palette Selector */}
-              <PaletteSelector 
+              <PaletteSelector
                 palettes={PRESET_PALETTES}
                 currentFg={settings.fgColor}
                 currentBg={settings.bgColor}
@@ -496,7 +496,7 @@ export const QRGenerator: React.FC = () => {
                   value={settings.bgColor}
                   onChange={(c) => setSettings(prev => ({ ...prev, bgColor: c }))}
                 />
-                
+
                 <div className="md:col-span-2 pt-2">
                   <RangeSlider
                     label="Size"
@@ -530,8 +530,8 @@ export const QRGenerator: React.FC = () => {
                     />
                     <CheckCircle2 size={16} className="absolute left-[14px] top-[14px] text-white opacity-0 peer-checked:opacity-100 pointer-events-none transition-opacity" />
                     <div className="flex flex-col">
-                       <span className="text-sm font-medium text-[#1F1F1F]">Quiet Zone</span>
-                       <span className="text-xs text-[#444746]">Add margin around code</span>
+                      <span className="text-sm font-medium text-[#1F1F1F]">Quiet Zone</span>
+                      <span className="text-xs text-[#444746]">Add margin around code</span>
                     </div>
                   </label>
                 </div>
@@ -546,7 +546,7 @@ export const QRGenerator: React.FC = () => {
             <div className="bg-white rounded-[2.5rem] shadow-[0_20px_50px_rgba(0,0,0,0.08)] border border-gray-100 p-8 relative overflow-hidden ring-1 ring-black/5">
               {/* Background decoration - Gemini Gradient */}
               <div className="absolute top-0 left-0 w-full h-2 bg-gradient-to-r from-[#4285F4] via-[#9B72CB] to-[#D96570]"></div>
-              
+
               <div className="flex flex-col items-center justify-center gap-10 pt-4">
                 {/* The actual QR Code Frame */}
                 <div className="relative group bg-white rounded-[2rem] p-6 shadow-sm border border-gray-100 transition-all duration-500 hover:shadow-md hover:scale-[1.01]">
@@ -557,11 +557,10 @@ export const QRGenerator: React.FC = () => {
                 <div className="w-full space-y-4">
                   <button
                     onClick={handleDownload}
-                    className={`w-full text-white px-8 py-5 rounded-full font-bold text-lg shadow-lg shadow-blue-500/20 transition-all transform active:scale-[0.98] flex items-center justify-center gap-3 group duration-300 ${
-                      downloadSuccess 
-                        ? 'bg-[#0F5C2E] hover:bg-[#0F5C2E]' 
+                    className={`w-full text-white px-8 py-5 rounded-full font-bold text-lg shadow-lg shadow-blue-500/20 transition-all transform active:scale-[0.98] flex items-center justify-center gap-3 group duration-300 ${downloadSuccess
+                        ? 'bg-[#0F5C2E] hover:bg-[#0F5C2E]'
                         : 'bg-[#0B57D0] hover:bg-[#0B57D0]/90'
-                    }`}
+                      }`}
                   >
                     {downloadSuccess ? (
                       <>
@@ -575,30 +574,30 @@ export const QRGenerator: React.FC = () => {
                       </>
                     )}
                   </button>
-                  
+
                   <div className="grid grid-cols-3 gap-3">
-                    <button 
-                       onClick={handleShare}
-                       className="w-full bg-white border border-gray-200 text-[#1F1F1F] hover:bg-gray-50 hover:border-gray-300 px-3 py-4 rounded-2xl font-medium transition-colors flex flex-col items-center justify-center gap-1 text-xs"
+                    <button
+                      onClick={handleShare}
+                      className="w-full bg-white border border-gray-200 text-[#1F1F1F] hover:bg-gray-50 hover:border-gray-300 px-3 py-4 rounded-2xl font-medium transition-colors flex flex-col items-center justify-center gap-1 text-xs"
                     >
-                        <Share2 size={18} />
-                        Share
+                      <Share2 size={18} />
+                      Share
                     </button>
 
-                    <button 
-                       onClick={handleCopyValue}
-                       className="w-full bg-white border border-gray-200 text-[#1F1F1F] hover:bg-gray-50 hover:border-gray-300 px-3 py-4 rounded-2xl font-medium transition-colors flex flex-col items-center justify-center gap-1 text-xs"
+                    <button
+                      onClick={handleCopyValue}
+                      className="w-full bg-white border border-gray-200 text-[#1F1F1F] hover:bg-gray-50 hover:border-gray-300 px-3 py-4 rounded-2xl font-medium transition-colors flex flex-col items-center justify-center gap-1 text-xs"
                     >
-                        <Copy size={18} />
-                        Copy Text
+                      <Copy size={18} />
+                      Copy Text
                     </button>
 
-                    <button 
-                       onClick={handleEmbed}
-                       className="w-full bg-white border border-gray-200 text-[#1F1F1F] hover:bg-gray-50 hover:border-gray-300 px-3 py-4 rounded-2xl font-medium transition-colors flex flex-col items-center justify-center gap-1 text-xs"
+                    <button
+                      onClick={handleEmbed}
+                      className="w-full bg-white border border-gray-200 text-[#1F1F1F] hover:bg-gray-50 hover:border-gray-300 px-3 py-4 rounded-2xl font-medium transition-colors flex flex-col items-center justify-center gap-1 text-xs"
                     >
-                        <Code size={18} />
-                        Embed
+                      <Code size={18} />
+                      Embed
                     </button>
                   </div>
 
@@ -609,33 +608,33 @@ export const QRGenerator: React.FC = () => {
                       <div className="h-px bg-gray-100 flex-1"></div>
                     </div>
                     <div className="flex justify-center gap-3">
-                       <button
-                         onClick={() => handleSocialShare('twitter')}
-                         className="w-10 h-10 rounded-full bg-black text-white flex items-center justify-center hover:scale-110 transition-transform shadow-sm"
-                         title="Share on X (Twitter)"
-                       >
-                         <Twitter size={18} fill="currentColor" />
-                       </button>
-                       <button
-                         onClick={() => handleSocialShare('facebook')}
-                         className="w-10 h-10 rounded-full bg-[#1877F2] text-white flex items-center justify-center hover:scale-110 transition-transform shadow-sm"
-                         title="Share on Facebook"
-                       >
-                         <Facebook size={18} fill="currentColor" />
-                       </button>
-                       <button
-                         onClick={() => handleSocialShare('whatsapp')}
-                         className="w-10 h-10 rounded-full bg-[#25D366] text-white flex items-center justify-center hover:scale-110 transition-transform shadow-sm"
-                         title="Share on WhatsApp"
-                       >
-                         <MessageCircle size={18} fill="currentColor" />
-                       </button>
+                      <button
+                        onClick={() => handleSocialShare('twitter')}
+                        className="w-10 h-10 rounded-full bg-black text-white flex items-center justify-center hover:scale-110 transition-transform shadow-sm"
+                        title="Share on X (Twitter)"
+                      >
+                        <Twitter size={18} fill="currentColor" />
+                      </button>
+                      <button
+                        onClick={() => handleSocialShare('facebook')}
+                        className="w-10 h-10 rounded-full bg-[#1877F2] text-white flex items-center justify-center hover:scale-110 transition-transform shadow-sm"
+                        title="Share on Facebook"
+                      >
+                        <Facebook size={18} fill="currentColor" />
+                      </button>
+                      <button
+                        onClick={() => handleSocialShare('whatsapp')}
+                        className="w-10 h-10 rounded-full bg-[#25D366] text-white flex items-center justify-center hover:scale-110 transition-transform shadow-sm"
+                        title="Share on WhatsApp"
+                      >
+                        <MessageCircle size={18} fill="currentColor" />
+                      </button>
                     </div>
                   </div>
                 </div>
-                
+
                 <div className="text-center">
-                   <p className="text-[10px] font-bold text-gray-400 uppercase tracking-widest">
+                  <p className="text-[10px] font-bold text-gray-400 uppercase tracking-widest">
                     {settings.size}px • High Res
                   </p>
                 </div>
@@ -661,7 +660,7 @@ export const QRGenerator: React.FC = () => {
             </div>
           </div>
         </div>
-        
+
         <div className="lg:col-span-12">
           <SEOContent />
         </div>
