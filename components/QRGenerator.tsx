@@ -253,7 +253,7 @@ export const QRGenerator: React.FC = () => {
 
       {/* Hero Section - Reveal 1 */}
       <div className="text-center mb-16 space-y-4 reveal-on-scroll">
-        <h1 className="text-5xl md:text-6xl font-medium tracking-tight text-[#1F1F1F]">
+        <h1 className="text-3xl md:text-6xl font-medium tracking-tight text-[#1F1F1F]">
           Create with <span className="bg-gradient-to-r from-[#4285F4] via-[#9B72CB] to-[#D96570] bg-clip-text text-transparent">Precision</span>
         </h1>
         <p className="text-lg text-[#444746] max-w-2xl mx-auto leading-relaxed">
@@ -261,7 +261,7 @@ export const QRGenerator: React.FC = () => {
         </p>
       </div>
 
-      <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 mb-24">
+      <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-12 mb-24">
         {/* Left Column: Configuration - Reveal 2 (Staggered) */}
         <div className="lg:col-span-7 space-y-8 reveal-on-scroll delay-100">
 
@@ -280,7 +280,7 @@ export const QRGenerator: React.FC = () => {
               <TabButton active={activeTab === 'ai'} label="Magic AI" icon={Sparkles} onClick={() => setActiveTab('ai')} isSpecial />
             </div>
 
-            <div className="p-8">
+            <div className="p-5 md:p-8">
               {activeTab === 'url' && (
                 <div className="space-y-6 animate-in fade-in zoom-in-95 duration-300">
                   <div>
@@ -292,7 +292,7 @@ export const QRGenerator: React.FC = () => {
                       <input
                         type="url"
                         placeholder="https://example.com"
-                        className="w-full pl-14 pr-4 py-4 bg-[#F8FAFC] border border-gray-100 rounded-2xl text-[#1F1F1F] placeholder-gray-400 focus:ring-4 focus:ring-[#0B57D0]/10 focus:border-[#0B57D0] focus:bg-white transition-all outline-none"
+                        className="w-full pl-14 pr-4 py-3 md:py-4 bg-[#F8FAFC] border border-gray-100 rounded-2xl text-[#1F1F1F] placeholder-gray-400 focus:ring-4 focus:ring-[#0B57D0]/10 focus:border-[#0B57D0] focus:bg-white transition-all outline-none"
                         value={inputText}
                         onChange={(e) => setInputText(e.target.value)}
                       />
@@ -312,7 +312,7 @@ export const QRGenerator: React.FC = () => {
                       <textarea
                         rows={5}
                         placeholder="Type or paste your text here..."
-                        className="w-full pl-14 pr-4 py-4 bg-[#F8FAFC] border border-gray-100 rounded-2xl text-[#1F1F1F] placeholder-gray-400 focus:ring-4 focus:ring-[#0B57D0]/10 focus:border-[#0B57D0] focus:bg-white transition-all outline-none resize-none leading-relaxed"
+                        className="w-full pl-14 pr-4 py-3 md:py-4 bg-[#F8FAFC] border border-gray-100 rounded-2xl text-[#1F1F1F] placeholder-gray-400 focus:ring-4 focus:ring-[#0B57D0]/10 focus:border-[#0B57D0] focus:bg-white transition-all outline-none resize-none leading-relaxed"
                         value={inputText}
                         onChange={(e) => setInputText(e.target.value)}
                       />
@@ -332,7 +332,7 @@ export const QRGenerator: React.FC = () => {
                       <input
                         type="text"
                         placeholder="e.g. MyHomeNetwork"
-                        className="w-full pl-14 pr-4 py-4 bg-[#F8FAFC] border border-gray-100 rounded-2xl text-[#1F1F1F] placeholder-gray-400 focus:ring-4 focus:ring-[#0B57D0]/10 focus:border-[#0B57D0] focus:bg-white transition-all outline-none"
+                        className="w-full pl-14 pr-4 py-3 md:py-4 bg-[#F8FAFC] border border-gray-100 rounded-2xl text-[#1F1F1F] placeholder-gray-400 focus:ring-4 focus:ring-[#0B57D0]/10 focus:border-[#0B57D0] focus:bg-white transition-all outline-none"
                         value={wifiSsid}
                         onChange={(e) => setWifiSsid(e.target.value)}
                       />
@@ -349,7 +349,7 @@ export const QRGenerator: React.FC = () => {
                         <input
                           type={showWifiPass ? "text" : "password"}
                           placeholder="Network Password"
-                          className="w-full pl-14 pr-12 py-4 bg-[#F8FAFC] border border-gray-100 rounded-2xl text-[#1F1F1F] placeholder-gray-400 focus:ring-4 focus:ring-[#0B57D0]/10 focus:border-[#0B57D0] focus:bg-white transition-all outline-none"
+                          className="w-full pl-14 pr-12 py-3 md:py-4 bg-[#F8FAFC] border border-gray-100 rounded-2xl text-[#1F1F1F] placeholder-gray-400 focus:ring-4 focus:ring-[#0B57D0]/10 focus:border-[#0B57D0] focus:bg-white transition-all outline-none"
                           value={wifiPass}
                           onChange={(e) => setWifiPass(e.target.value)}
                         />
@@ -468,7 +468,7 @@ export const QRGenerator: React.FC = () => {
           </div>
 
           {/* Customization Settings - Reveal 3 */}
-          <div className="bg-white rounded-[2rem] shadow-[0_8px_30px_rgba(0,0,0,0.04)] border border-gray-100 p-8 reveal-on-scroll delay-200">
+          <div className="bg-white rounded-[2rem] shadow-[0_8px_30px_rgba(0,0,0,0.04)] border border-gray-100 p-5 md:p-8 reveal-on-scroll delay-200">
             <h2 className="text-xl font-semibold text-[#1F1F1F] mb-8 flex items-center gap-3">
               <div className="w-10 h-10 rounded-full bg-[#D3E3FD]/50 flex items-center justify-center text-[#0B57D0]">
                 <Eye size={20} />
@@ -543,7 +543,7 @@ export const QRGenerator: React.FC = () => {
         {/* Right Column: Preview - Reveal 2 (Matches top config but sticky) */}
         <div className="lg:col-span-5 reveal-on-scroll delay-100">
           <div className="sticky top-28 space-y-6">
-            <div className="bg-white rounded-[2.5rem] shadow-[0_20px_50px_rgba(0,0,0,0.08)] border border-gray-100 p-8 relative overflow-hidden ring-1 ring-black/5">
+            <div className="bg-white rounded-[2.5rem] shadow-[0_20px_50px_rgba(0,0,0,0.08)] border border-gray-100 p-5 md:p-8 relative overflow-hidden ring-1 ring-black/5">
               {/* Background decoration - Gemini Gradient */}
               <div className="absolute top-0 left-0 w-full h-2 bg-gradient-to-r from-[#4285F4] via-[#9B72CB] to-[#D96570]"></div>
 
@@ -558,8 +558,8 @@ export const QRGenerator: React.FC = () => {
                   <button
                     onClick={handleDownload}
                     className={`w-full text-white px-8 py-5 rounded-full font-bold text-lg shadow-lg shadow-blue-500/20 transition-all transform active:scale-[0.98] flex items-center justify-center gap-3 group duration-300 ${downloadSuccess
-                        ? 'bg-[#0F5C2E] hover:bg-[#0F5C2E]'
-                        : 'bg-[#0B57D0] hover:bg-[#0B57D0]/90'
+                      ? 'bg-[#0F5C2E] hover:bg-[#0F5C2E]'
+                      : 'bg-[#0B57D0] hover:bg-[#0B57D0]/90'
                       }`}
                   >
                     {downloadSuccess ? (
@@ -642,7 +642,7 @@ export const QRGenerator: React.FC = () => {
             </div>
 
             {/* Tips Card */}
-            <div className="bg-[#1F1F1F] rounded-[2rem] p-8 text-white shadow-xl relative overflow-hidden group">
+            <div className="bg-[#1F1F1F] rounded-[2rem] p-5 md:p-8 text-white shadow-xl relative overflow-hidden group">
               <div className="absolute -top-20 -right-20 w-64 h-64 bg-gradient-to-br from-[#4285F4] to-[#9B72CB] opacity-10 blur-[60px] rounded-full group-hover:opacity-20 transition-opacity duration-700"></div>
               <div className="relative flex items-start gap-5">
                 <div className="p-2.5 bg-white/10 rounded-xl shrink-0 backdrop-blur-sm border border-white/5">
