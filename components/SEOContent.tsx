@@ -1,10 +1,10 @@
 import React from 'react';
-import { Shield, Smartphone, Zap, CheckCircle, HelpCircle, AlertTriangle, ExternalLink } from 'lucide-react';
+import { Shield, Smartphone, Zap, CheckCircle, HelpCircle, AlertTriangle, ExternalLink, RefreshCw, Star, TrendingUp, Users } from 'lucide-react';
 
 export const SEOContent: React.FC = () => {
   return (
     <article className="mt-24 mb-16 max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 space-y-16 text-gray-700">
-
+      
       {/* Article Header */}
       <header className="text-center space-y-6 reveal-on-scroll">
         <h2 className="text-3xl md:text-5xl font-extrabold text-gray-900 tracking-tight">
@@ -24,15 +24,35 @@ export const SEOContent: React.FC = () => {
 
       <hr className="border-gray-200 reveal-on-scroll" />
 
-      {/* Section 1: Introduction */}
-      <section className="space-y-6 reveal-on-scroll">
-        <h3 className="text-2xl font-bold text-gray-900">What Are QR Codes and How Do They Work?</h3>
-        <p className="leading-relaxed text-lg">
-          Quick Response (QR) codes are two-dimensional barcodes invented by Denso Wave in 1994. Unlike traditional 1D barcodes found on grocery items that store data horizontally, QR codes store data both vertically and horizontally. This 2D structure allows them to hold significantly more information—up to 4,000+ alphanumeric characters compared to the ~20 of a standard barcode.
-        </p>
-        <p className="leading-relaxed text-lg">
-          Today, they are ubiquitous in digital marketing, contactless payments, and information sharing, acting as a physical-to-digital bridge that connects offline users to online resources instantly.
-        </p>
+      {/* Success Stories Section (New) */}
+      <section className="space-y-8 reveal-on-scroll">
+         <div className="flex items-center gap-3 mb-6">
+            <div className="p-2 bg-yellow-100 text-yellow-600 rounded-lg"><Star size={24} fill="currentColor" /></div>
+            <h3 className="text-3xl font-bold text-gray-900">Success Stories</h3>
+         </div>
+         <div className="grid md:grid-cols-3 gap-6">
+            <div className="bg-white p-6 rounded-2xl border border-gray-100 shadow-sm hover:shadow-md transition-shadow">
+               <h4 className="font-bold text-lg mb-2 text-[#1F1F1F]">Cafe Boost</h4>
+               <p className="text-sm text-gray-600 mb-4">"We placed a Wi-Fi QR code on every table. Customer questions dropped by 90% and average stay time increased."</p>
+               <div className="flex items-center gap-2 text-xs font-semibold text-gray-400 uppercase tracking-wider">
+                  <TrendingUp size={14} /> <span>Efficiency +40%</span>
+               </div>
+            </div>
+            <div className="bg-white p-6 rounded-2xl border border-gray-100 shadow-sm hover:shadow-md transition-shadow">
+               <h4 className="font-bold text-lg mb-2 text-[#1F1F1F]">Networking Pro</h4>
+               <p className="text-sm text-gray-600 mb-4">"I stopped buying paper business cards. Now I just show my phone screen, and clients save my contact instantly."</p>
+               <div className="flex items-center gap-2 text-xs font-semibold text-gray-400 uppercase tracking-wider">
+                  <Users size={14} /> <span>Connections +2x</span>
+               </div>
+            </div>
+            <div className="bg-white p-6 rounded-2xl border border-gray-100 shadow-sm hover:shadow-md transition-shadow">
+               <h4 className="font-bold text-lg mb-2 text-[#1F1F1F]">Event Magic</h4>
+               <p className="text-sm text-gray-600 mb-4">"Our wedding invitations had a Maps QR code. Not a single guest got lost finding the remote venue."</p>
+               <div className="flex items-center gap-2 text-xs font-semibold text-gray-400 uppercase tracking-wider">
+                  <ExternalLink size={14} /> <span>100% Arrival</span>
+               </div>
+            </div>
+         </div>
       </section>
 
       {/* Section 2: Step-by-Step */}
@@ -62,6 +82,66 @@ export const SEOContent: React.FC = () => {
               </div>
             </li>
           </ol>
+        </div>
+      </section>
+
+      {/* Section 2.5: Static vs Dynamic */}
+      <section className="space-y-6 reveal-on-scroll">
+        <h3 className="text-2xl font-bold text-gray-900">Static vs. Dynamic QR Codes</h3>
+        <div className="grid md:grid-cols-2 gap-6">
+           <div className="bg-gradient-to-br from-blue-50 to-indigo-50 p-8 rounded-2xl border border-blue-100 relative overflow-hidden hover:shadow-md transition-all">
+              <div className="absolute top-0 right-0 p-4 opacity-10">
+                 <Shield size={100} className="text-blue-600" />
+              </div>
+              <h4 className="font-bold text-blue-900 mb-4 flex items-center gap-2 text-lg">
+                 <Zap size={20} className="text-blue-600" /> 
+                 Static QR Codes
+              </h4>
+              <p className="text-sm text-blue-800 mb-6 leading-relaxed font-medium">
+                 This tool generates Static codes. The data is permanently encoded into the pixels.
+              </p>
+              <ul className="space-y-3 text-sm text-blue-700">
+                 <li className="flex items-start gap-3">
+                    <CheckCircle size={18} className="shrink-0 mt-0.5 text-blue-600" /> 
+                    <span><strong>Permanent:</strong> Works forever. No expiration date.</span>
+                 </li>
+                 <li className="flex items-start gap-3">
+                    <CheckCircle size={18} className="shrink-0 mt-0.5 text-blue-600" /> 
+                    <span><strong>Private:</strong> Direct connection. No tracking servers.</span>
+                 </li>
+                 <li className="flex items-start gap-3">
+                    <CheckCircle size={18} className="shrink-0 mt-0.5 text-blue-600" /> 
+                    <span><strong>Free:</strong> No monthly subscriptions required.</span>
+                 </li>
+              </ul>
+           </div>
+
+           <div className="bg-white p-8 rounded-2xl border border-gray-200 text-gray-500 relative overflow-hidden hover:border-gray-300 transition-all">
+              <div className="absolute top-0 right-0 p-4 opacity-5">
+                 <ExternalLink size={100} />
+              </div>
+              <h4 className="font-bold text-gray-700 mb-4 flex items-center gap-2 text-lg">
+                 <RefreshCw size={20} /> 
+                 Dynamic QR Codes
+              </h4>
+              <p className="text-sm text-gray-500 mb-6 leading-relaxed">
+                 Uses a redirect URL. Often requires a paid subscription service.
+              </p>
+              <ul className="space-y-3 text-sm text-gray-500">
+                 <li className="flex items-start gap-3">
+                    <CheckCircle size={18} className="shrink-0 mt-0.5" /> 
+                    <span><strong>Editable:</strong> Change destination after printing.</span>
+                 </li>
+                 <li className="flex items-start gap-3">
+                    <CheckCircle size={18} className="shrink-0 mt-0.5" /> 
+                    <span><strong>Trackable:</strong> Provides scan analytics.</span>
+                 </li>
+                 <li className="flex items-start gap-3">
+                    <AlertTriangle size={18} className="shrink-0 mt-0.5 text-amber-500" /> 
+                    <span><strong>Risk:</strong> Stops working if subscription ends.</span>
+                 </li>
+              </ul>
+           </div>
         </div>
       </section>
 
@@ -104,7 +184,7 @@ export const SEOContent: React.FC = () => {
             </p>
           </div>
         </div>
-
+        
         <div className="grid md:grid-cols-2 gap-8 pt-4">
           <div>
             <h4 className="font-bold text-gray-900 mb-2 flex items-center gap-2">
@@ -124,7 +204,7 @@ export const SEOContent: React.FC = () => {
             </h4>
             <ul className="list-disc list-inside space-y-2 text-sm">
               <li><strong>Verify URL:</strong> Check the preview URL on your phone screen before tapping.</li>
-              <li><strong>Use Static Codes:</strong> Tools like QR Studio generate <em>static</em> codes. The data is in the image, not routed through a tracking server, ensuring better privacy.</li>
+              <li><strong>Use Static Codes:</strong> Tools like Gemini QR Studio generate <em>static</em> codes. The data is in the image, not routed through a tracking server, ensuring better privacy.</li>
             </ul>
           </div>
         </div>
@@ -164,7 +244,7 @@ export const SEOContent: React.FC = () => {
           <HelpCircle className="text-gray-400" />
           Frequently Asked Questions
         </h3>
-
+        
         <div className="grid md:grid-cols-2 gap-x-12 gap-y-8">
           <div>
             <h4 className="font-bold text-gray-900 mb-2">Do these QR codes expire?</h4>
@@ -180,7 +260,7 @@ export const SEOContent: React.FC = () => {
           </div>
           <div>
             <h4 className="font-bold text-gray-900 mb-2">Are these codes commercial-free?</h4>
-            <p className="text-gray-600 text-sm">Yes. You can use the QR codes generated by QR Studio for commercial products, marketing materials, and business cards without attribution.</p>
+            <p className="text-gray-600 text-sm">Yes. You can use the QR codes generated by Gemini QR Studio for commercial products, marketing materials, and business cards without attribution.</p>
           </div>
         </div>
       </section>

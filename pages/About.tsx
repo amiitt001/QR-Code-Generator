@@ -45,7 +45,7 @@ export const About: React.FC = () => {
         <h2 className="text-2xl font-bold text-[#1F1F1F] mb-6">Our Technology</h2>
         <div className="space-y-6 text-[#444746] text-lg leading-relaxed">
           <p>
-            QR Studio leverages the latest web technologies to deliver a tool that is not just functional, but delightful to use. By combining <strong>React</strong> for a responsive interface with <strong>Google's GenAI SDK</strong>, we've created a generator that understands intent.
+            Gemini QR Studio leverages the latest web technologies to deliver a tool that is not just functional, but delightful to use. By combining <strong>React</strong> for a responsive interface with <strong>Google's GenAI SDK</strong>, we've created a generator that understands intent.
           </p>
           <p>
             Unlike many "free" tools that lock features behind paywalls or use tracking links, our tool creates true, static QR codes. They belong to you, forever.

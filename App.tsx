@@ -82,7 +82,7 @@ export default function App() {
                 <QrCode className="text-[#0B57D0]" strokeWidth={2} size={20}/>
               </div>
               <span className="text-xl font-bold tracking-tight text-[#1F1F1F]">
-                QR Studio
+                Gemini QR
               </span>
             </div>
             
@@ -103,6 +103,21 @@ export default function App() {
                    </button>
                  ))}
                </nav>
+            </div>
+
+            {/* Desktop CTA */}
+            <div className="hidden md:flex items-center reveal-on-scroll delay-200">
+              <a 
+                href="https://ai.google.dev" 
+                target="_blank" 
+                rel="noreferrer" 
+                className="group flex items-center gap-2 text-sm font-medium px-4 py-2 rounded-full hover:bg-white hover:shadow-sm transition-all border border-transparent hover:border-gray-100"
+              >
+                <Sparkles size={16} className="text-[#0B57D0] group-hover:rotate-12 transition-transform duration-500" />
+                <span className="bg-gradient-to-r from-[#4285F4] via-[#9B72CB] to-[#D96570] bg-clip-text text-transparent opacity-90 group-hover:opacity-100">
+                  Built with Gemini
+                </span>
+              </a>
             </div>
 
             {/* Mobile Menu Toggle */}

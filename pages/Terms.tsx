@@ -4,12 +4,12 @@ export const Terms: React.FC = () => {
   return (
     <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
       <h1 className="text-3xl font-bold text-gray-900 mb-8">Terms and Conditions</h1>
-
+      
       <div className="prose prose-indigo max-w-none text-gray-600 space-y-8">
         <section>
           <h2 className="text-xl font-bold text-gray-900 mb-3">1. Agreement to Terms</h2>
           <p>
-            These Terms and Conditions constitute a legally binding agreement made between you, whether personally or on behalf of an entity ("you") and QR Studio ("we," "us" or "our"), concerning your access to and use of the QR Studio website as well as any other media form, media channel, mobile website or mobile application related, linked, or otherwise connected thereto (collectively, the "Site").
+            These Terms and Conditions constitute a legally binding agreement made between you, whether personally or on behalf of an entity ("you") and Gemini QR Studio ("we," "us" or "our"), concerning your access to and use of the Gemini QR Studio website as well as any other media form, media channel, mobile website or mobile application related, linked, or otherwise connected thereto (collectively, the "Site").
           </p>
         </section>
 
@@ -56,7 +56,7 @@ export const Terms: React.FC = () => {
         <section>
           <h2 className="text-xl font-bold text-gray-900 mb-3">6. Governing Law</h2>
           <p>
-            These Terms shall be governed by and defined following the laws of the United States. QR Studio and yourself irrevocably consent that the courts of the United States shall have exclusive jurisdiction to resolve any dispute which may arise in connection with these terms.
+            These Terms shall be governed by and defined following the laws of the United States. Gemini QR Studio and yourself irrevocably consent that the courts of the United States shall have exclusive jurisdiction to resolve any dispute which may arise in connection with these terms.
           </p>
         </section>
       </div>

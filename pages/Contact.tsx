@@ -21,8 +21,8 @@ export const Contact: React.FC = () => {
             <div>
               <h3 className="font-bold text-lg text-gray-900">Email Support</h3>
               <p className="text-gray-600 text-sm mb-1">For general inquiries and technical support:</p>
-              <a href="mailto:amitverma2k99@gmail.com" className="text-indigo-600 font-medium hover:underline">
-                support@qr.studio
+              <a href="mailto:support@geminiqr.studio" className="text-indigo-600 font-medium hover:underline">
+                support@geminiqr.studio
               </a>
             </div>
           </div>
@@ -34,8 +34,8 @@ export const Contact: React.FC = () => {
             <div>
               <h3 className="font-bold text-lg text-gray-900">Feedback</h3>
               <p className="text-gray-600 text-sm mb-1">Found a bug or have a feature request?</p>
-              <a href="mailto:amitverma2k99@gmail.com" className="text-indigo-600 font-medium hover:underline">
-                feedback@qr.studio
+              <a href="mailto:feedback@geminiqr.studio" className="text-indigo-600 font-medium hover:underline">
+                feedback@geminiqr.studio
               </a>
             </div>
           </div>
@@ -66,7 +66,7 @@ export const Contact: React.FC = () => {
             <div>
               <h4 className="font-medium text-gray-900 mb-1">Is this tool free?</h4>
               <p className="text-sm text-gray-500">
-                Yes! QR Studio is completely free to use for both personal and commercial projects.
+                Yes! Gemini QR Studio is completely free to use for both personal and commercial projects.
               </p>
             </div>
             <div>

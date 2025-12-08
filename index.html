@@ -1,85 +1,82 @@
 <!DOCTYPE html>
 <html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Gemini QR Studio</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,300;400;500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+    
+    <!-- Google AdSense Script -->
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-XXXXXXXXXXXXXXXX" crossorigin="anonymous"></script>
 
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>QR Studio</title>
-  <script src="https://cdn.tailwindcss.com"></script>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link
-    href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,300;400;500;600;700&family=Space+Mono:wght@400;700&display=swap"
-    rel="stylesheet">
-  <style>
-    :root {
-      --gemini-gradient: linear-gradient(90deg, #4285F4, #9B72CB, #D96570);
-    }
+    <style>
+      :root {
+        --gemini-gradient: linear-gradient(90deg, #4285F4, #9B72CB, #D96570);
+      }
+      body {
+        font-family: 'DM Sans', sans-serif;
+        background-color: #F0F4F9; /* Google light gray background */
+        color: #1F1F1F;
+        -webkit-font-smoothing: antialiased;
+        overflow-x: hidden;
+      }
+      .font-mono {
+        font-family: 'Space Mono', monospace;
+      }
 
-    body {
-      font-family: 'DM Sans', sans-serif;
-      background-color: #F0F4F9;
-      /* Google light gray background */
-      color: #1F1F1F;
-      -webkit-font-smoothing: antialiased;
-      overflow-x: hidden;
-    }
-
-    .font-mono {
-      font-family: 'Space Mono', monospace;
-    }
-
-    /* 
+      /* 
        * Google-style Smooth Reveal Animation System 
        * Uses a custom cubic-bezier for that "premium" deceleration feel.
        */
-    .reveal-on-scroll {
-      opacity: 0;
-      transform: translateY(20px);
-      transition: opacity 0.8s ease-out, transform 0.8s cubic-bezier(0.2, 0.8, 0.2, 1);
-      will-change: opacity, transform;
-    }
+      .reveal-on-scroll {
+        opacity: 0;
+        transform: translateY(20px);
+        transition: opacity 0.8s ease-out, transform 0.8s cubic-bezier(0.2, 0.8, 0.2, 1);
+        will-change: opacity, transform;
+      }
 
-    .reveal-on-scroll.is-visible {
-      opacity: 1;
-      transform: translateY(0);
-    }
+      .reveal-on-scroll.is-visible {
+        opacity: 1;
+        transform: translateY(0);
+      }
 
-    /* Stagger Delays for Grid/List items */
-    .delay-100 {
-      transition-delay: 100ms;
-    }
+      /* Stagger Delays for Grid/List items */
+      .delay-100 { transition-delay: 100ms; }
+      .delay-200 { transition-delay: 200ms; }
+      .delay-300 { transition-delay: 300ms; }
+      .delay-400 { transition-delay: 400ms; }
 
-    .delay-200 {
-      transition-delay: 200ms;
-    }
-
-    .delay-300 {
-      transition-delay: 300ms;
-    }
-
-    .delay-400 {
-      transition-delay: 400ms;
-    }
-
-    /* Subtle scale up for hero images */
-    .reveal-scale-up {
-      opacity: 0;
-      transform: scale(0.95);
-      transition: opacity 0.8s ease-out, transform 0.8s cubic-bezier(0.2, 0.8, 0.2, 1);
-    }
-
-    .reveal-scale-up.is-visible {
-      opacity: 1;
-      transform: scale(1);
-    }
-  </style>
-
+      /* Subtle scale up for hero images */
+      .reveal-scale-up {
+        opacity: 0;
+        transform: scale(0.95);
+        transition: opacity 0.8s ease-out, transform 0.8s cubic-bezier(0.2, 0.8, 0.2, 1);
+      }
+      
+      .reveal-scale-up.is-visible {
+        opacity: 1;
+        transform: scale(1);
+      }
+    </style>
+  <script type="importmap">
+{
+  "imports": {
+    "react-dom/": "https://aistudiocdn.com/react-dom@^19.2.1/",
+    "react/": "https://aistudiocdn.com/react@^19.2.1/",
+    "react": "https://aistudiocdn.com/react@^19.2.1",
+    "lucide-react": "https://aistudiocdn.com/lucide-react@^0.556.0",
+    "@google/genai": "https://aistudiocdn.com/@google/genai@^1.31.0",
+    "qrcode.react": "https://aistudiocdn.com/qrcode.react@^4.2.0",
+    "html5-qrcode": "https://aistudiocdn.com/html5-qrcode@^2.3.8",
+    "qrcode": "https://aistudiocdn.com/qrcode@^1.5.3"
+  }
+}
+</script>
 </head>
-
-<body>
-  <div id="root"></div>
-  <script type="module" src="/index.tsx"></script>
-</body>
-
+  <body>
+    <div id="root"></div>
+  </body>
 </html>

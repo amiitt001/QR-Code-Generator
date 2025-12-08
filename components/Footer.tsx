@@ -15,7 +15,7 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate }) => {
               Next-generation QR code generation powered by Google's Gemini AI. Designed for performance, privacy, and precision.
             </p>
           </div>
-
+          
           <div className="col-span-1 md:col-span-2 md:col-start-7">
             <h4 className="text-xs font-bold text-[#444746] uppercase tracking-widest mb-6">Product</h4>
             <ul className="space-y-4">
@@ -53,15 +53,15 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate }) => {
             </ul>
           </div>
         </div>
-
+        
         <div className="pt-8 border-t border-gray-100 flex flex-col md:flex-row justify-between items-center gap-6">
           <p className="text-xs text-[#9CA3AF]">
-            © {new Date().getFullYear()} QR Studio. Open source and free forever.
+            © {new Date().getFullYear()} Gemini QR Studio. Open source and free forever.
           </p>
           <div className="flex gap-6">
             <a href="#" className="text-gray-400 hover:text-gray-900 transition-colors">
-              <span className="sr-only">Twitter</span>
-              {/* Icon placeholder */}
+               <span className="sr-only">Twitter</span>
+               {/* Icon placeholder */}
             </a>
           </div>
         </div>

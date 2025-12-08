@@ -1,4 +1,23 @@
-export type QRMode = 'text' | 'url' | 'wifi' | 'vcard' | 'ai';
+
+export type QRMode = 
+  | 'url' 
+  | 'text' 
+  | 'email' 
+  | 'phone' 
+  | 'sms' 
+  | 'vcard' 
+  | 'whatsapp' 
+  | 'wifi' 
+  | 'pdf' 
+  | 'app' 
+  | 'image' 
+  | 'video' 
+  | 'social' 
+  | 'event' 
+  | 'barcode' 
+  | 'ai';
+
+export type QRModuleShape = 'square' | 'circle' | 'rounded' | 'diamond';
 
 export interface QRSettings {
   value: string;
@@ -7,6 +26,7 @@ export interface QRSettings {
   bgColor: string;
   level: 'L' | 'M' | 'Q' | 'H';
   includeMargin: boolean;
+  style: QRModuleShape;
   imageSettings?: {
     src: string;
     height: number;

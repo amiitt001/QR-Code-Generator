@@ -1,4 +1,6 @@
 import React from 'react';
+import { Square, Circle, BoxSelect, Diamond } from 'lucide-react';
+import { QRModuleShape } from '../types';
 
 interface ColorPickerProps {
   label: string;
@@ -139,3 +141,39 @@ export const SelectControl: React.FC<SelectControlProps> = ({ label, value, opti
     </div>
   </div>
 );
+
+interface ShapeSelectorProps {
+  value: QRModuleShape;
+  onChange: (val: QRModuleShape) => void;
+}
+
+export const ShapeSelector: React.FC<ShapeSelectorProps> = ({ value, onChange }) => {
+  const shapes: { id: QRModuleShape; label: string; icon: React.ElementType }[] = [
+    { id: 'square', label: 'Square', icon: Square },
+    { id: 'circle', label: 'Dots', icon: Circle },
+    { id: 'rounded', label: 'Round', icon: BoxSelect },
+    { id: 'diamond', label: 'Diamond', icon: Diamond },
+  ];
+
+  return (
+    <div className="space-y-3">
+      <label className="text-sm font-semibold text-[#444746] ml-1">Module Shape</label>
+      <div className="grid grid-cols-4 gap-2">
+        {shapes.map((s) => (
+          <button
+            key={s.id}
+            onClick={() => onChange(s.id)}
+            className={`flex flex-col items-center justify-center gap-2 p-3 rounded-2xl border transition-all ${
+              value === s.id
+                ? 'bg-[#EBF2FA] border-[#0B57D0] text-[#0B57D0] shadow-sm'
+                : 'bg-[#F8FAFC] border-gray-100 text-[#444746] hover:bg-white hover:border-gray-200 hover:shadow-sm'
+            }`}
+            title={s.label}
+          >
+            <s.icon size={20} strokeWidth={2} className={value === s.id ? 'fill-current opacity-20' : ''} />
+          </button>
+        ))}
+      </div>
+    </div>
+  );
+};
