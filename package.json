@@ -1,31 +1,12 @@
 {
-  "name": "gemini-qr-studio",
+  "name": "qr-pdf-tools",
+  "version": "1.0.0",
+  "description": "QR Code Generator & PDF Converter - 100% Client-Side",
   "private": true,
-  "version": "0.0.0",
-  "type": "module",
   "scripts": {
-    "dev": "vite",
-    "build": "vite build",
-    "preview": "vite preview"
+    "dev": "cd client && npm run dev",
+    "build": "cd client && npm run build",
+    "preview": "cd client && npm run preview"
   },
-  "dependencies": {
-    "@google/genai": "^1.31.0",
-    "html5-qrcode": "^2.3.8",
-    "lucide-react": "^0.556.0",
-    "qrcode": "^1.5.3",
-    "qrcode.react": "^4.2.0",
-    "react": "^19.2.1",
-    "react-dom": "^19.2.1"
-  },
-  "devDependencies": {
-    "@types/node": "^22.19.2",
-    "@types/react": "^19.2.7",
-    "@types/react-dom": "^19.2.3",
-    "@vitejs/plugin-react": "^5.0.0",
-    "autoprefixer": "^10.4.20",
-    "postcss": "^8.4.49",
-    "tailwindcss": "^3.4.17",
-    "typescript": "~5.8.2",
-    "vite": "^6.2.0"
-  }
+  "keywords": ["qr-code", "pdf-converter", "client-side", "react", "vite"]
 }
