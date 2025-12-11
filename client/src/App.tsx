@@ -1,11 +1,15 @@
 import React, { useState, useEffect } from 'react';
-import { QRGenerator } from './components/QRGenerator';
+import { Home } from './pages/Home';
+import { QRPage } from './pages/QRPage';
 import { Footer } from './components/Footer';
 import { PrivacyPolicy } from './pages/PrivacyPolicy';
 import { Terms } from './pages/Terms';
 import { About } from './pages/About';
 import { Contact } from './pages/Contact';
-import { QrCode, Sparkles, Menu, X } from 'lucide-react';
+import { Dashboard } from './pages/Dashboard';
+import { PDFConverterPage } from './pages/PDFConverterPage';
+import { DashboardFAB } from './components/DashboardFAB';
+import { QrCode, Menu, X } from 'lucide-react';
 import { useScrollReveal } from './hooks/useScrollReveal';
 
 export default function App() {
@@ -29,12 +33,15 @@ export default function App() {
 
   const renderPage = () => {
     switch(currentPage) {
-      case 'home': return <QRGenerator />;
+      case 'home': return <Home onNavigate={handleNavigate} />;
+      case 'qr': return <QRPage />;
+      case 'dashboard': return <Dashboard />;
+      case 'pdf-converter': return <PDFConverterPage />;
       case 'privacy': return <PrivacyPolicy />;
       case 'terms': return <Terms />;
       case 'about': return <About />;
       case 'contact': return <Contact />;
-      default: return <QRGenerator />;
+      default: return <Home onNavigate={handleNavigate} />;
     }
   };
 
@@ -89,7 +96,7 @@ export default function App() {
             {/* Desktop Nav */}
             <div className="hidden md:flex items-center gap-1 bg-white/50 backdrop-blur-sm p-1.5 rounded-full border border-gray-100/50 reveal-on-scroll delay-100">
                <nav className="flex gap-1">
-                 {['home', 'about', 'contact'].map((page) => (
+                 {['home', 'qr', 'pdf-converter', 'dashboard'].map((page) => (
                    <button 
                     key={page}
                     onClick={() => handleNavigate(page)} 
@@ -99,25 +106,10 @@ export default function App() {
                         : 'text-[#444746] hover:bg-white hover:shadow-sm'
                     }`}
                    >
-                     {page.charAt(0).toUpperCase() + page.slice(1)}
+                     {page === 'qr' ? 'QR Generator' : page === 'pdf-converter' ? 'PDF Tools' : page.charAt(0).toUpperCase() + page.slice(1)}
                    </button>
                  ))}
                </nav>
-            </div>
-
-            {/* Desktop CTA */}
-            <div className="hidden md:flex items-center reveal-on-scroll delay-200">
-              <a 
-                href="https://ai.google.dev" 
-                target="_blank" 
-                rel="noreferrer" 
-                className="group flex items-center gap-2 text-sm font-medium px-4 py-2 rounded-full hover:bg-white hover:shadow-sm transition-all border border-transparent hover:border-gray-100"
-              >
-                <Sparkles size={16} className="text-[#0B57D0] group-hover:rotate-12 transition-transform duration-500" />
-                <span className="bg-gradient-to-r from-[#4285F4] via-[#9B72CB] to-[#D96570] bg-clip-text text-transparent opacity-90 group-hover:opacity-100">
-                  Built with Gemini
-                </span>
-              </a>
             </div>
 
             {/* Mobile Menu Toggle */}
@@ -137,7 +129,7 @@ export default function App() {
           }`}
         >
           <nav className="flex flex-col gap-4">
-             {['home', 'about', 'contact', 'privacy', 'terms'].map((page, idx) => (
+             {['home', 'qr', 'pdf-converter', 'dashboard', 'about', 'contact'].map((page, idx) => (
                <button 
                 key={page}
                 onClick={() => handleNavigate(page)} 
@@ -146,30 +138,21 @@ export default function App() {
                 }`}
                 style={{ transitionDelay: `${idx * 100}ms` }}
                >
-                 {page.charAt(0).toUpperCase() + page.slice(1)}
+                 {page === 'qr' ? 'QR Generator' : page === 'pdf-converter' ? 'PDF Tools' : page.charAt(0).toUpperCase() + page.slice(1)}
                </button>
              ))}
           </nav>
-          
-          <div className="mt-auto mb-8 reveal-on-scroll delay-300">
-             <a 
-                href="https://ai.google.dev" 
-                target="_blank" 
-                rel="noreferrer" 
-                className="flex items-center justify-center gap-2 text-base font-medium p-4 bg-white rounded-2xl shadow-sm border border-gray-100"
-              >
-                <Sparkles size={18} className="text-[#0B57D0]" />
-                <span className="bg-gradient-to-r from-[#4285F4] via-[#9B72CB] to-[#D96570] bg-clip-text text-transparent">
-                  Powered by Google Gemini
-                </span>
-              </a>
-          </div>
         </div>
       </header>
 
-      <main className="flex-1 max-w-[1440px] mx-auto w-full px-6 sm:px-8 py-8 lg:py-12 z-0">
+      <main className="flex-1 w-full z-0">
         {renderPage()}
       </main>
+
+      {/* Dashboard FAB - Show on all pages except dashboard */}
+      {currentPage !== 'dashboard' && (
+        <DashboardFAB onClick={() => handleNavigate('dashboard')} />
+      )}
 
       <Footer onNavigate={handleNavigate} />
     </div>

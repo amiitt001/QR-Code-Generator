@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 
 interface AdSenseProps {
   className?: string;
@@ -17,16 +17,12 @@ export const AdSense: React.FC<AdSenseProps> = ({
   format = 'auto',
   layoutKey
 }) => {
-  useEffect(() => {
-    try {
-      // @ts-ignore
-      const adsbygoogle = window.adsbygoogle || [];
-      // @ts-ignore
-      adsbygoogle.push({});
-    } catch (e) {
-      console.error('AdSense error:', e);
-    }
-  }, []);
+  // AdSense disabled - Replace placeholder client ID with real one to enable
+  const isConfigured = client && !client.includes('XXXXXXXX');
+  
+  if (!isConfigured) {
+    return null; // Don't render if not properly configured
+  }
 
   return (
     <div className={`ad-container w-full overflow-hidden ${className || ''}`} aria-label="Advertisement">

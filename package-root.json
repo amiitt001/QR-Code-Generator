@@ -1,0 +1,23 @@
+{
+  "name": "qr-pdf-tools",
+  "version": "1.0.0",
+  "description": "QR Code Generator and PDF Converter - 100% Client-Side Application",
+  "private": true,
+  "scripts": {
+    "install": "cd client && npm install",
+    "dev": "cd client && npm run dev",
+    "build": "cd client && npm run build",
+    "preview": "cd client && npm run preview",
+    "clean": "cd client && rm -rf node_modules dist .vite"
+  },
+  "keywords": [
+    "qr-code",
+    "pdf-converter",
+    "client-side",
+    "react",
+    "typescript",
+    "vite"
+  ],
+  "author": "",
+  "license": "MIT"
+}
